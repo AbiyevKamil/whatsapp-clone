@@ -7,16 +7,19 @@ import MoreVert from '@material-ui/icons/MoreVert'
 import InsertEmotionIcon from '@material-ui/icons/InsertEmoticon'
 import MicIcon from '@material-ui/icons/Mic'
 import axios from '../axios';
+import { useStateValue } from "../redux/StateProvider";
 
 function Chat({ messages }) {
     const [input, setInput] = useState('');
+    const [{ user }, dispatch] = useStateValue();
+
 
     const sendMessage = async (e) => {
         e.preventDefault();
         await axios.post(('/messages/new'), {
             message: input,
-            name: "Kamil",
-            timestamp: "Just now!",
+            name: user.displayName,
+            timestamp: new Date().toUTCString(),
             received: true,
         })
 

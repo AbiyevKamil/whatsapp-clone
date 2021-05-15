@@ -4,9 +4,12 @@ import Chat from './chat/Chat.jsx';
 import Sidebar from './sidebar/Sidebar.jsx';
 import Pusher from 'pusher-js'
 import axios from './axios'
+import Login from './Login/Login'
+import { useStateValue } from "./redux/StateProvider";
 
 function App() {
   const [messages, setMessages] = useState([]);
+  const [{ user }, dispatch] = useStateValue();
 
   useEffect(() => {
     axios.get('/messages/sync')
@@ -36,10 +39,12 @@ function App() {
 
   return (
     <div className="app">
-      <div className="app__body">
-        <Sidebar />
-        <Chat messages={messages} />
-      </div>
+      {!user ? <Login /> :
+        <div className="app__body">
+          <Sidebar />
+          <Chat messages={messages} />
+        </div>
+      }
     </div>
   );
 }
