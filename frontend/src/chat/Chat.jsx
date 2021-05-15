@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import './Chat.css'
 import { Avatar, IconButton } from '@material-ui/core'
 import SearchOutlined from '@material-ui/icons/SearchOutlined'
@@ -10,8 +10,10 @@ import axios from '../axios';
 import { useStateValue } from "../redux/StateProvider";
 
 function Chat({ messages }) {
+    const [isMe, setIsMe] = useState(false);
     const [input, setInput] = useState('');
     const [{ user }, dispatch] = useStateValue();
+
 
 
     const sendMessage = async (e) => {
@@ -48,7 +50,7 @@ function Chat({ messages }) {
             </div>
             <div className="chat__body">
                 {messages.map((message) => (
-                    <p key={message._id} className={`chat__message ${message.received && "chat__reciever"}`}>
+                    <p key={message._id} className={`chat__message ${message.name === user.displayName && "chat__reciever"}`}>
                         <span className="chat__name">{message.name}</span>
                         {message.message}
                         <span className="chat__timestamp">
