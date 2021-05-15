@@ -1,6 +1,6 @@
 import React from "react";
 import { Button } from "@material-ui/core";
-import facebookIMG from '../images/facebook.png'
+import gooogleIMG from '../images/googleLogo.png'
 import { actions } from "../redux/Reducer";
 import { useStateValue } from "../redux/StateProvider";
 import './Login.css'
@@ -24,7 +24,7 @@ function Login() {
     return (
         <div className="login">
             <div className="login-logo">
-                <img src={"https://upload.wikimedia.org/wikipedia/commons/thumb/5/51/Facebook_f_logo_%282019%29.svg/1365px-Facebook_f_logo_%282019%29.svg.png"} alt="facebook_logo" />
+                <img src={gooogleIMG} alt="facebook_logo" />
             </div>
             <Button type="submit" onClick={signIn}>
                 Sign in

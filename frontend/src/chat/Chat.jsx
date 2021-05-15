@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 import './Chat.css'
 import { Avatar, IconButton } from '@material-ui/core'
 import SearchOutlined from '@material-ui/icons/SearchOutlined'
@@ -10,7 +10,6 @@ import axios from '../axios';
 import { useStateValue } from "../redux/StateProvider";
 
 function Chat({ messages }) {
-    const [isMe, setIsMe] = useState(false);
     const [input, setInput] = useState('');
     const [{ user }, dispatch] = useStateValue();
 
