@@ -35,8 +35,6 @@ function App() {
 
   }, [messages])
 
-  console.log(messages)
-
   return (
     <div className="app">
       {!user ? <Login /> :
